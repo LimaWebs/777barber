@@ -9,17 +9,17 @@
 <body>
   <header>
     <div class="container navbar">
-      <a class="brand" href="index.html">
+      <a class="brand" href="/index.html">
         <span class="brand-mark">777</span>
         <span>777 Barber</span>
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">&#9776;</button>
       <nav class="nav-links" id="navLinks">
-        <a href="login.html">Login</a>
-        <a href="index.html">Início</a>
-        <a href="agendamento.html">Agendamento</a>
-        <a href="produtos.html">Cosméticos</a>
-        <a class="active" href="profissional.html">Profissional</a>
+        <a href="/login.html">Login</a>
+        <a href="/index.html">Início</a>
+        <a href="/agendamento.html">Agendamento</a>
+        <a href="/produtos.html">Cosméticos</a>
+        <a class="active" href="/profissional.html">Profissional</a>
       </nav>
     </div>
   </header>
@@ -31,7 +31,7 @@
           <span class="badge" style="border-color:rgba(214,178,94,0.5); background:rgba(214,178,94,0.15);">Área restrita</span>
           <p></p>
           <h1>Painel do profissional</h1>
-          <p>Resumo dos principais indicadores da barbearia. <span class="muted" style="font-size:0.85rem;">(dados ilustrativos — serão conectados ao banco de dados)</span></p>
+          <p>Resumo dos principais indicadores da barbearia.</p>
         </div>
         <button class="btn btn-secondary" id="btnAtualizarDados" style="min-height:40px;">⟳ Atualizar dados</button>
       </div>
@@ -40,50 +40,33 @@
       <section class="kpi" style="margin-top: 24px;">
         <article class="card">
           <span class="muted">Agendamentos</span>
-          <strong id="kpiAgendamentos">124</strong>
+          <strong id="kpiAgendamentos">—</strong>
           <p>Total registrado no período</p>
-          <!-- Todos os agendamentos -->
-<section class="card" style="margin-top: 18px;">
-  <h2>Todos os agendamentos</h2>
-  <p>Gerencie e confirme todos os agendamentos registrados.</p>
-  <div id="todosAgendamentos"></div>
-</section>
-
-<!-- Clientes cadastrados -->
-<section class="card" style="margin-top: 18px;">
-  <h2>Clientes cadastrados</h2>
-  <p>Lista de todos os clientes registrados no sistema.</p>
-  <div id="listaClientes"></div>
-</section>
         </article>
         <article class="card">
           <span class="muted">Serviço mais escolhido</span>
-          <strong id="kpiServico">Combo</strong>
+          <strong id="kpiServico">—</strong>
           <p>Corte + barba</p>
         </article>
         <article class="card">
           <span class="muted">Pico de demanda</span>
-          <strong id="kpiPico">18h</strong>
+          <strong id="kpiPico">—</strong>
           <p>Horário com mais solicitações</p>
         </article>
         <article class="card">
           <span class="muted">Taxa de ocupação</span>
-          <strong id="kpiOcupacao">87%</strong>
+          <strong id="kpiOcupacao">—</strong>
           <p>Agenda do dia</p>
         </article>
       </section>
 
       <div class="grid-2" style="margin-top: 18px;">
-        <!-- Gráfico de barras -->
         <section class="card">
           <h2>Serviço mais escolhido</h2>
           <p>O serviço combinado aparece como principal preferência dos clientes.</p>
-          <div class="bar-list" id="barList">
-            <!-- Preenchido via JS -->
-          </div>
+          <div class="bar-list" id="barList"></div>
         </section>
 
-        <!-- Tabela de horários -->
         <section class="card">
           <h2>Horários de maior demanda</h2>
           <p>Os horários no fim da tarde concentram a maior quantidade de reservas.</p>
@@ -95,9 +78,7 @@
                 <th>Status</th>
               </tr>
             </thead>
-            <tbody id="tabelaHorarios">
-              <!-- Preenchido via JS -->
-            </tbody>
+            <tbody id="tabelaHorarios"></tbody>
           </table>
         </section>
       </div>
@@ -105,19 +86,28 @@
       <!-- Faturamento -->
       <section class="card" style="margin-top: 18px;">
         <h2>Faturamento do período</h2>
-        <p class="muted" style="font-size:0.85rem;">Valores ilustrativos — integração com banco de dados em desenvolvimento.</p>
-        <div class="grid-3" id="faturamentoGrid">
-          <!-- Preenchido via JS -->
-        </div>
+        <div class="grid-3" id="faturamentoGrid"></div>
       </section>
 
       <!-- Agenda do dia -->
       <section class="card" style="margin-top: 18px;">
         <h2>Agenda do dia</h2>
         <p>Acompanhe os atendimentos de hoje.</p>
-        <div class="grid-3" id="agendaDia">
-          <!-- Preenchido via JS -->
-        </div>
+        <div class="grid-3" id="agendaDia"></div>
+      </section>
+
+      <!-- Todos os agendamentos -->
+      <section class="card" style="margin-top: 18px;">
+        <h2>Todos os agendamentos</h2>
+        <p>Gerencie e confirme todos os agendamentos registrados.</p>
+        <div id="todosAgendamentos"></div>
+      </section>
+
+      <!-- Clientes cadastrados -->
+      <section class="card" style="margin-top: 18px;">
+        <h2>Clientes cadastrados</h2>
+        <p>Lista de todos os clientes registrados no sistema.</p>
+        <div id="listaClientes"></div>
       </section>
     </div>
   </main>

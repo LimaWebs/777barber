@@ -20,9 +20,9 @@ function calcularFaturamento(agendamentos) {
 async function carregarStats() {
   try {
     const [statsResp, todosResp, clientesResp] = await Promise.all([
-      fetch('http://localhost:3000/api/admin/stats'),
-      fetch('http://localhost:3000/api/admin/agendamentos'),
-      fetch('http://localhost:3000/api/admin/clientes')
+      fetch('/api/admin/stats'),
+      fetch('/api/admin/agendamentos'),
+      fetch('/api/admin/clientes')
     ])
 
     const stats = await statsResp.json()
@@ -234,7 +234,7 @@ function renderClientes(clientes) {
 // ── Atualizar status ──────────────────────────────────────────
 async function atualizarStatus(id, status) {
   try {
-    await fetch(`http://localhost:3000/api/agendamentos/${id}/status`, {
+    await fetch(`/api/agendamentos/${id}/status`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status })

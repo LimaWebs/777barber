@@ -38,7 +38,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async (e) => 
   if (!valido) return
 
   try {
-    const resp = await fetch('http://localhost:3000/api/usuarios/cadastro', {
+    const resp = await fetch('/api/usuarios/cadastro', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nome, email, senha, telefone, nascimento })

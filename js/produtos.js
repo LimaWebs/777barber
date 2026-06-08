@@ -38,7 +38,7 @@ document.getElementById('btnFinalizarCompra').addEventListener('click', async ()
   const resumo = carrinho.map(i => `${i.qtd}x ${i.produto}`).join(', ')
 
   try {
-    await fetch('http://localhost:3000/api/pedidos', {
+    await fetch('/api/pedidos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

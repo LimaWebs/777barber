@@ -16,7 +16,7 @@ async function atualizarHorariosOcupados() {
 
   try {
     const resp = await fetch(
-      `http://localhost:3000/api/agendamentos/ocupados?data=${data}&profissional=${encodeURIComponent(profissionalSelecionado)}`
+      `/api/agendamentos/ocupados?data=${data}&profissional=${encodeURIComponent(profissionalSelecionado)}`
     )
     const ocupados = await resp.json()
 
@@ -150,7 +150,7 @@ document.getElementById('btnConfirmar').addEventListener('click', async () => {
   }
 
   try {
-    const resp = await fetch('http://localhost:3000/api/agendamentos', {
+    const resp = await fetch('/api/agendamentos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dados)

@@ -13,7 +13,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   if (!senha) { document.getElementById('senhaError').textContent = 'Informe a senha.'; return }
 
   try {
-    const resp = await fetch('http://localhost:3000/api/usuarios/login', {
+    const resp = await fetch('/api/usuarios/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, senha })

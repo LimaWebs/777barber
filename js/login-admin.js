@@ -13,7 +13,7 @@ document.getElementById('adminLoginForm').addEventListener('submit', async (e) =
   if (!senha) { document.getElementById('adminSenhaError').textContent = 'Informe a senha.'; return }
 
   try {
-    const resp = await fetch('http://localhost:3000/api/usuarios/login-admin', {
+    const resp = await fetch('/api/usuarios/login-admin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, senha })

@@ -6,7 +6,9 @@ let idParaCancelar = null
 // ── Carrega os agendamentos da API ────────────────────────────
 async function carregarAgendamentos() {
   try {
-    const resposta = await fetch(API)
+    const usuario = JSON.parse(localStorage.getItem('usuario') || 'null')
+  const url = usuario ? `/api/agendamentos/usuario/${usuario.id}` : '/api/agendamentos'
+  const resposta = await fetch(url)
     agendamentos = await resposta.json()
     renderizar()
   } catch (erro) {

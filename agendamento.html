@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>777 Barber | Agendamento</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <a class="brand" <a href="/index.html">Início</a>>
+        <span class="brand-mark">777</span>
+        <span>777 Barber</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">&#9776;</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="login.html">Login</a>
+        <a href="/index.html">Início</a>
+        <a class="active" href="agendamento.html">Agendamento</a>
+        <a href="meus-agendamentos.html">Meus Agendamentos</a>
+        <a href="produtos.html">Cosméticos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <span class="badge">Reserva de horário</span>
+      <p></p>
+      <h1>Agendamento online</h1>
+      <p>Escolha os serviços, o profissional e um horário disponível.</p>
+
+      <!-- Resumo dinâmico -->
+      <div class="booking-summary" id="bookingSummary" style="display:none;">
+        <span id="summaryServicos"></span>
+        <span id="summaryProfissional"></span>
+        <span id="summaryHorario"></span>
+        <span id="summaryTotal"></span>
+      </div>
+
+      <div class="booking-layout" style="margin-top: 24px;">
+        <section class="form-wrap">
+
+          <!-- Serviços — seleção MÚLTIPLA -->
+          <h2>Serviços <small style="font-size:0.8rem; color:var(--muted); font-weight:400;">— selecione um ou mais</small></h2>
+          <div class="option-row" id="servicoList">
+            <div class="option selectable-multi" data-value="Corte masculino" data-price="35">
+              <div><strong>Corte masculino</strong><br><small>Rápido e clássico</small></div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span>R$ 35</span>
+                <span class="check-icon">☐</span>
+              </div>
+            </div>
+            <div class="option selectable-multi" data-value="Barba completa" data-price="25">
+              <div><strong>Barba completa</strong><br><small>Acabamento premium</small></div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span>R$ 25</span>
+                <span class="check-icon">☐</span>
+              </div>
+            </div>
+            <div class="option selectable-multi" data-value="Combo corte + barba" data-price="55">
+              <div><strong>Combo corte + barba</strong><br><small>Mais escolhido pelos clientes</small></div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span>R$ 55</span>
+                <span class="check-icon">☐</span>
+              </div>
+            </div>
+            <div class="option selectable-multi" data-value="Sobrancelha" data-price="15">
+              <div><strong>Sobrancelha</strong><br><small>Detalhamento e alinhamento</small></div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span>R$ 15</span>
+                <span class="check-icon">☐</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-top: 22px;">
+            <!-- Profissionais — seleção única -->
+            <div>
+              <h2>Profissional</h2>
+              <div class="option-row" id="profissionalList">
+                <div class="option selectable" data-group="profissional" data-value="Mazinho">
+                  <div><strong>Mazinho</strong><br><small>Especialista em degradê</small></div>
+                  <span class="tag-disponivel">Disponível</span>
+                </div>
+                <div class="option selectable" data-group="profissional" data-value="Mazinho 02">
+                  <div><strong>Mazinho 02</strong><br><small>Barba e finalização</small></div>
+                  <span class="tag-disponivel">Disponível</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Horários — apenas os slots clicáveis, sem select duplicado -->
+            <div>
+              <h2>Horário</h2>
+              <div class="slot-grid" id="slotGrid">
+                <div class="slot selectable-slot" data-value="09:00">09:00</div>
+                <div class="slot selectable-slot" data-value="10:00">10:00</div>
+                <div class="slot selectable-slot" data-value="11:00">11:00</div>
+                <div class="slot selectable-slot" data-value="12:00">12:00</div>
+                <div class="slot selectable-slot" data-value="13:00">13:00</div>
+                <div class="slot selectable-slot" data-value="14:00">14:00</div>
+                <div class="slot selectable-slot" data-value="15:00">15:00</div>
+                <div class="slot selectable-slot" data-value="16:00">16:00</div>
+                <div class="slot selectable-slot" data-value="17:00">17:00</div>
+                <div class="slot selectable-slot" data-value="18:00">18:00</div>
+                <div class="slot selectable-slot" data-value="19:00">19:00</div>
+                <div class="slot selectable-slot" data-value="20:00">20:00</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Apenas campo de data -->
+          <div style="margin-top: 22px;">
+            <div class="field" style="max-width: 260px;">
+              <label for="data">Data</label>
+              <input id="data" type="date">
+              <span class="field-error" id="dataError"></span>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top: 14px;">
+            <label for="obs">Observações</label>
+            <textarea id="obs" placeholder="Ex.: preferências de corte, atraso, observações."></textarea>
+          </div>
+
+          <div id="agendamentoAlert" class="alert" style="display:none;"></div>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" id="btnConfirmar">Confirmar agendamento</button>
+            <a class="btn btn-secondary" href="/index.html">Cancelar</a>
+          </div>
+        </section>
+
+        <!-- Calendário visual -->
+        <aside class="form-wrap">
+          <h2>Integração visual com Google Calendar</h2>
+          <p></p>
+          <div class="calendar" aria-label="Calendário ilustrativo">
+            <div class="calendar-head" id="calendarHead"></div>
+            <div class="calendar-row" id="calendarRow"></div>
+          </div>
+          <div class="card" style="margin-top: 18px;">
+            <h3>Legenda</h3>
+            <p><strong style="color:#f4e1ae;">Ocupado</strong> — horários já reservados.</p>
+            <p><strong style="color:#fff;">Aberto</strong> — horários livres para o cliente.</p>
+          </div>
+          <div class="card" style="margin-top: 12px;">
+            <a href="meus-agendamentos.html" class="btn btn-secondary" style="width:100%; justify-content:center;">
+              📋 Ver meus agendamentos
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Interface de agendamento — 777 Barber</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/agendamento.js"></script>
+</body>
+</html>

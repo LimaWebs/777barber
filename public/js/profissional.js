@@ -1,5 +1,5 @@
-const admin = JSON.parse(localStorage.getItem('admin') || 'null')
-if (!admin) window.location.href = 'login-admin.html'
+const adminLogado = JSON.parse(localStorage.getItem('admin') || 'null')
+if (!adminLogado) window.location.href = '/login-admin.html'
 
 // ── Faturamento por serviço ───────────────────────────────────
 const PRECOS = {

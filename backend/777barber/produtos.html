@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>777 Barber | Cosméticos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">777</span>
+        <span>777 Barber</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">&#9776;</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="login.html">Login</a>
+        <a href="index.html">Início</a>
+        <a href="agendamento.html">Agendamento</a>
+        <a class="active" href="produtos.html">Cosméticos</a>
+        <a href="profissional.html">Profissional</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <span class="badge">Vitrine da barbearia</span>
+      <p></p>
+      <h1>Cosméticos e produtos</h1>
+      <p>Seção para demonstrar a venda de produtos como pomadas, óleos e pós modeladores.</p>
+
+      <!-- Carrinho flutuante -->
+      <div class="cart-bar" id="cartBar" style="display:none;">
+        <span id="cartInfo">0 item(s) — R$ 0,00</span>
+        <button class="btn btn-primary" id="btnFinalizarCompra" style="min-height:36px; padding: 0 14px;">Finalizar compra</button>
+        <button class="btn btn-secondary" id="btnLimparCarrinho" style="min-height:36px; padding: 0 14px;">Limpar</button>
+      </div>
+
+      <div class="grid-3" style="margin-top: 24px;">
+        <article class="card product-card" data-produto="Pomada Matte" data-preco="39.90">
+          <div class="product-photo" aria-hidden="true"></div>
+          <div>
+            <h2>Pomada Matte</h2>
+            <p>Fixação média e acabamento sem brilho.</p>
+            <div class="price">R$ 39,90</div>
+          </div>
+          <button class="btn btn-primary btn-add-cart">Adicionar ao carrinho</button>
+        </article>
+
+        <article class="card product-card" data-produto="Óleo para barba" data-preco="29.90">
+          <div class="product-photo" aria-hidden="true"></div>
+          <div>
+            <h2>Óleo para barba</h2>
+            <p>Hidratação e aroma suave para uso diário.</p>
+            <div class="price">R$ 29,90</div>
+          </div>
+          <button class="btn btn-primary btn-add-cart">Adicionar ao carrinho</button>
+        </article>
+
+        <article class="card product-card" data-produto="Pó modelador" data-preco="34.90">
+          <div class="product-photo" aria-hidden="true"></div>
+          <div>
+            <h2>Pó modelador</h2>
+            <p>Volume e textura para penteados modernos.</p>
+            <div class="price">R$ 34,90</div>
+          </div>
+          <button class="btn btn-primary btn-add-cart">Adicionar ao carrinho</button>
+        </article>
+      </div>
+
+      <section class="grid-2" style="margin-top: 18px;">
+        <article class="card">
+          <h2>Combos promocionais</h2>
+          <p>Tudo que você precisa.</p>
+          <div class="tag-list">
+            <span class="tag">Corte + Pomada</span>
+            <span class="tag">Barba + Óleo</span>
+            <span class="tag">Kit Finalização</span>
+          </div>
+        </article>
+        <article class="card">
+          <h2>Observação</h2>
+          <p>O produto deve ser retirado na barbearia.</p>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modal de confirmação de compra -->
+  <div class="modal-overlay" id="modalCompra" style="display:none;">
+    <div class="modal-box">
+      <h2>Pedido registrado! ✅</h2>
+      <p id="modalResumo"></p>
+      <p class="muted">Retire seus produtos na barbearia. Em breve a integração de pagamento estará disponível.</p>
+      <button class="btn btn-primary" id="btnFecharModal">Fechar</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>Produtos que trazem sua autoestima de volta.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/produtos.js"></script>
+</body>
+</html>

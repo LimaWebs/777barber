@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>777 Barber | Cadastro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">777</span>
+        <span>777 Barber</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">&#9776;</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="login.html">Login</a>
+        <a href="index.html">Início</a>
+        <a href="agendamento.html">Agendamento</a>
+        <a href="produtos.html">Cosméticos</a>
+        <a href="profissional.html">Profissional</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container grid-2">
+      <section>
+        <span class="badge">Novo usuário</span>
+        <p></p>
+        <h1>Cadastro</h1>
+        <p>Registro para acesso futuro ao agendamento.</p>
+      </section>
+
+      <section class="form-wrap">
+        <div id="cadastroAlert" class="alert" style="display:none;"></div>
+        <form id="cadastroForm" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="nome">Nome completo</label>
+              <input id="nome" type="text" placeholder="Seu nome" autocomplete="name">
+              <span class="field-error" id="nomeError"></span>
+            </div>
+            <div class="field">
+              <label for="telefone">Telefone</label>
+              <input id="telefone" type="tel" placeholder="(00) 00000-0000" maxlength="15" autocomplete="tel">
+              <span class="field-error" id="telefoneError"></span>
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input id="email" type="email" placeholder="seuemail@exemplo.com" autocomplete="email">
+              <span class="field-error" id="emailError"></span>
+            </div>
+            <div class="field">
+              <label for="nascimento">Data de nascimento</label>
+              <input id="nascimento" type="date" autocomplete="bday">
+              <span class="field-error" id="nascimentoError"></span>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top: 14px;">
+            <label for="senha">Senha</label>
+            <div class="input-wrap">
+              <input id="senha" type="password" placeholder="Crie uma senha (mín. 6 caracteres)" autocomplete="new-password">
+              <button type="button" class="toggle-pw" id="toggleSenha" aria-label="Mostrar senha">👁</button>
+            </div>
+            <span class="field-error" id="senhaError"></span>
+          </div>
+
+          <div class="field" style="margin-top: 14px;">
+            <label for="senhaConfirm">Confirmar senha</label>
+            <div class="input-wrap">
+              <input id="senhaConfirm" type="password" placeholder="Repita a senha" autocomplete="new-password">
+              <button type="button" class="toggle-pw" id="toggleConfirm" aria-label="Mostrar senha">👁</button>
+            </div>
+            <span class="field-error" id="senhaConfirmError"></span>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="btnCadastrar">Finalizar cadastro</button>
+            <a class="btn btn-secondary" href="index.html">Voltar</a>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Área de cadastro</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/cadastro.js"></script>
+</body>
+</html>

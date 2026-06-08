@@ -24,7 +24,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
     localStorage.setItem('usuario', JSON.stringify(data))
     mostrarAlerta('Login realizado! Redirecionando...', 'sucesso')
-    setTimeout(() => window.location.href = 'home.html', 1200)
+    setTimeout(() => window.location.href = '/index.html', 1200)
   } catch {
     mostrarAlerta('Erro ao conectar ao servidor.', 'erro')
   }

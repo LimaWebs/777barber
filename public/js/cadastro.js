@@ -33,6 +33,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async (e) => 
 
   if (!nome) { document.getElementById('nomeError').textContent = 'Informe seu nome.'; valido = false }
   if (!email) { document.getElementById('emailError').textContent = 'Informe seu e-mail.'; valido = false }
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('emailError').textContent = 'E-mail inválido.'; valido = false }
   if (senha.length < 6) { document.getElementById('senhaError').textContent = 'Mínimo 6 caracteres.'; valido = false }
   if (senha !== senhaConfirm) { document.getElementById('senhaConfirmError').textContent = 'As senhas não coincidem.'; valido = false }
   if (!valido) return
@@ -45,7 +46,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async (e) => 
     })
     const data = await resp.json()
 
-    if (!resp.ok) return mostrarAlerta(data.erro, 'erro')
+    if (!resp.ok) return mostrarAlerta(data.erro || 'Erro ao cadastrar.', 'erro')
 
     mostrarAlerta('Cadastro realizado! Redirecionando...', 'sucesso')
     setTimeout(() => window.location.href = 'login.html', 1500)

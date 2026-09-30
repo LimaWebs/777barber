@@ -10,8 +10,7 @@
   <header>
     <div class="container navbar">
       <a class="brand" href="index.html">
-        <span class="brand-mark">777</span>
-        <span>777 Barber</span>
+        <img src="/img/logo.png" alt="Logo 777 Barber Shop" class="brand-logo">
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">&#9776;</button>
       <nav class="nav-links" id="navLinks">
@@ -29,7 +28,16 @@
       <span class="badge">Vitrine da barbearia</span>
       <p></p>
       <h1>Cosméticos e produtos</h1>
-      <p>Seção para demonstrar a venda de produtos como pomadas, óleos e pós modeladores.</p>
+      <p>Produtos para comprar pelo site e retirar na barbearia, e o que você encontra só presencialmente.</p>
+
+      <div class="tag-list" style="margin-top:14px;">
+        <a class="tag" href="#cosmeticos">🧴 Cosméticos (comprar online)</a>
+        <a class="tag" href="#bar">🍻 Bar da barbearia (presencial)</a>
+      </div>
+
+      <!-- ═══════════ COSMÉTICOS (com carrinho) ═══════════ -->
+      <h2 class="section-title" id="cosmeticos">🧴 Cosméticos</h2>
+      <p class="muted">Adicione ao carrinho e retire na barbearia.</p>
 
       <!-- Carrinho flutuante -->
       <div class="cart-bar" id="cartBar" style="display:none;">
@@ -38,31 +46,47 @@
         <button class="btn btn-secondary" id="btnLimparCarrinho" style="min-height:36px; padding: 0 14px;">Limpar</button>
       </div>
 
-      <div class="grid-3" style="margin-top: 24px;">
+      <div class="grid-3" style="margin-top: 20px;">
         <article class="card product-card" data-produto="Pomada Matte" data-preco="39.90">
           <div class="product-photo" aria-hidden="true"></div>
           <div>
-            <h2>Pomada Matte</h2>
+            <h3>Pomada Matte</h3>
             <p>Fixação média e acabamento sem brilho.</p>
             <div class="price">R$ 39,90</div>
           </div>
           <button class="btn btn-primary btn-add-cart">Adicionar ao carrinho</button>
         </article>
-
+        <article class="card product-card" data-produto="Gel" data-preco="24.90">
+          <div class="product-photo" aria-hidden="true"></div>
+          <div>
+            <h3>Gel</h3>
+            <p>Fixação forte e efeito molhado para o dia todo.</p>
+            <div class="price">R$ 24,90</div>
+          </div>
+          <button class="btn btn-primary btn-add-cart">Adicionar ao carrinho</button>
+        </article>
+        <article class="card product-card" data-produto="Minoxidil" data-preco="79.90">
+          <div class="product-photo" aria-hidden="true"></div>
+          <div>
+            <h3>Minoxidil</h3>
+            <p>Tratamento tópico para barba e cabelo. Use conforme a orientação do fabricante.</p>
+            <div class="price">R$ 79,90</div>
+          </div>
+          <button class="btn btn-primary btn-add-cart">Adicionar ao carrinho</button>
+        </article>
         <article class="card product-card" data-produto="Óleo para barba" data-preco="29.90">
           <div class="product-photo" aria-hidden="true"></div>
           <div>
-            <h2>Óleo para barba</h2>
+            <h3>Óleo para barba</h3>
             <p>Hidratação e aroma suave para uso diário.</p>
             <div class="price">R$ 29,90</div>
           </div>
           <button class="btn btn-primary btn-add-cart">Adicionar ao carrinho</button>
         </article>
-
         <article class="card product-card" data-produto="Pó modelador" data-preco="34.90">
           <div class="product-photo" aria-hidden="true"></div>
           <div>
-            <h2>Pó modelador</h2>
+            <h3>Pó modelador</h3>
             <p>Volume e textura para penteados modernos.</p>
             <div class="price">R$ 34,90</div>
           </div>
@@ -70,7 +94,27 @@
         </article>
       </div>
 
-      <section class="grid-2" style="margin-top: 18px;">
+      <!-- ═══════════ BAR (somente presencial, sem carrinho) ═══════════ -->
+      <h2 class="section-title" id="bar">🍻 Bar da 777 Barber</h2>
+      <p class="muted">Enquanto você espera ou depois do corte, tem bebida gelada na barbearia.</p>
+
+      <div class="bar-notice">
+        <span aria-hidden="true">📍</span>
+        <span><strong>Disponível somente presencialmente.</strong> Estas bebidas não são vendidas pelo site. Consulte os valores direto no balcão.</span>
+      </div>
+
+      <div class="bar-grid">
+        <div class="bar-item"><span class="bar-emoji" aria-hidden="true"></span><strong>Cerveja</strong></div>
+        <div class="bar-item"><span class="bar-emoji" aria-hidden="true"></span><strong>Guaraná</strong></div>
+        <div class="bar-item"><span class="bar-emoji" aria-hidden="true"></span><strong>Energético</strong></div>
+        <div class="bar-item"><span class="bar-emoji" aria-hidden="true"></span><strong>Água</strong></div>
+        <div class="bar-item"><span class="bar-emoji" aria-hidden="true"></span><strong>Coca-Cola</strong></div>
+        <div class="bar-item"><span class="bar-emoji" aria-hidden="true"></span><strong>Dose de whisky (copão)</strong></div>
+      </div>
+
+      <p class="muted" style="margin-top:14px; font-size:0.9rem;">🔞 Bebidas alcoólicas: venda e consumo proibidos para menores de 18 anos.</p>
+
+      <section class="grid-2" style="margin-top: 40px;">
         <article class="card">
           <h2>Combos promocionais</h2>
           <p>Tudo que você precisa.</p>
@@ -82,7 +126,8 @@
         </article>
         <article class="card">
           <h2>Observação</h2>
-          <p>O produto deve ser retirado na barbearia.</p>
+          <p><strong>Cosméticos:</strong> compre pelo site e retire na barbearia.</p>
+          <p><strong>Bebidas:</strong> disponíveis apenas no local, sem compra online.</p>
         </article>
       </section>
     </div>

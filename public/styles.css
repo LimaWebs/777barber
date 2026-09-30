@@ -561,6 +561,45 @@ textarea { min-height: 120px; resize: vertical; }
   color: #f4e1ae;
 }
 
+/* ── Área de produtos: cosméticos x bar ── */
+.section-title { margin: 44px 0 4px; font-size: 1.5rem; }
+
+.bar-notice {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 16px 0 20px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: rgba(214, 178, 94, 0.08);
+  border: 1px solid rgba(214, 178, 94, 0.35);
+  line-height: 1.4;
+}
+
+.bar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.bar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.bar-emoji { font-size: 1.6rem; }
+
+@media (max-width: 900px) {
+  .bar-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .bar-grid { grid-template-columns: 1fr; }
+}
 /* Barra do carrinho */
 .cart-bar {
   display: flex;
@@ -897,4 +936,36 @@ footer {
 .nav-links button:hover {
   border-color: rgba(214, 178, 94, 0.3);
   color: #f4e1ae;
+}
+/* Nome do usuário logado no menu */
+.nav-user {
+  color: var(--gold);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.navbar {
+  min-height: 96px;
+}
+
+.brand-logo {
+  height: 76px;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  flex-shrink: 0;
+  mix-blend-mode: lighten;
+}
+
+@media (max-width: 700px) {
+  .brand-logo { height: 56px; }
+}
+.hero-logo {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin: 10px 0 14px;
+  mix-blend-mode: lighten;
 }

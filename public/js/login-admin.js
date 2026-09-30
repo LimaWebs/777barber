@@ -20,8 +20,9 @@ document.getElementById('adminLoginForm').addEventListener('submit', async (e) =
     })
     const data = await resp.json()
 
-    if (!resp.ok) return mostrarAlerta(data.erro, 'erro')
+    if (!resp.ok) return mostrarAlerta(data.erro || 'Erro ao entrar.', 'erro')
 
+    localStorage.removeItem('usuario')
     localStorage.setItem('admin', JSON.stringify(data))
     mostrarAlerta('Acesso autorizado! Redirecionando...', 'sucesso')
     setTimeout(() => window.location.href = 'profissional.html', 1200)

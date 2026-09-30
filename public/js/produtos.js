@@ -30,29 +30,32 @@ document.getElementById('btnLimparCarrinho').addEventListener('click', () => {
   atualizarCarrinho()
 })
 
-document.getElementById('btnFinalizarCompra').addEventListener('click', async () => {
+document.getElementById('btnFinalizarCompra').addEventListener('click', async (e) => {
   if (carrinho.length === 0) return
-
-  const usuario = JSON.parse(localStorage.getItem('usuario') || 'null')
-  const total = carrinho.reduce((s, i) => s + i.preco * i.qtd, 0)
-  const resumo = carrinho.map(i => `${i.qtd}x ${i.produto}`).join(', ')
+  const btn = e.currentTarget
+  btn.disabled = true
 
   try {
-    await fetch('/api/pedidos', {
+    const { ok, data } = await B777.api('/api/pedidos', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        usuario_id: usuario?.id ?? null,
-        produtos: resumo,
-        total
-      })
+      body: { itens: carrinho.map(i => ({ produto: i.produto, qtd: i.qtd })) }
     })
-  } catch { /* segue mesmo sem salvar */ }
 
-  document.getElementById('modalResumo').textContent = resumo + ` — Total: R$ ${total.toFixed(2).replace('.', ',')}`
-  document.getElementById('modalCompra').style.display = 'flex'
-  carrinho = []
-  atualizarCarrinho()
+    if (!ok) {
+      alert((data && data.erro) || 'Não foi possível registrar o pedido.')
+      return
+    }
+
+    document.getElementById('modalResumo').textContent =
+      `${data.resumo} — Total: R$ ${Number(data.total).toFixed(2).replace('.', ',')}`
+    document.getElementById('modalCompra').style.display = 'flex'
+    carrinho = []
+    atualizarCarrinho()
+  } catch {
+    alert('Não foi possível conectar ao servidor. Seu carrinho foi mantido.')
+  } finally {
+    btn.disabled = false
+  }
 })
 
 document.getElementById('btnFecharModal').addEventListener('click', () => {

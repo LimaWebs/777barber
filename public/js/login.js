@@ -5,6 +5,7 @@ document.getElementById('toggleSenha').addEventListener('click', () => {
 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
   e.preventDefault()
+  const btn = document.getElementById('btnEntrar')
   const email = document.getElementById('email').value.trim()
   const senha = document.getElementById('senha').value
   document.querySelectorAll('.field-error').forEach(el => el.textContent = '')
@@ -13,6 +14,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   if (!senha) { document.getElementById('senhaError').textContent = 'Informe a senha.'; return }
 
   try {
+    btn.disabled = true
     const resp = await fetch('/api/usuarios/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -20,12 +22,14 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     })
     const data = await resp.json()
 
-    if (!resp.ok) return mostrarAlerta(data.erro, 'erro')
+    if (!resp.ok) { btn.disabled = false; return mostrarAlerta(data.erro || 'Erro ao entrar.', 'erro') }
 
+    localStorage.removeItem('admin')
     localStorage.setItem('usuario', JSON.stringify(data))
     mostrarAlerta('Login realizado! Redirecionando...', 'sucesso')
-    setTimeout(() => window.location.href = '/index.html', 1200)
+    setTimeout(() => window.location.href = '/index.html', 800)
   } catch {
+    btn.disabled = false
     mostrarAlerta('Erro ao conectar ao servidor.', 'erro')
   }
 })

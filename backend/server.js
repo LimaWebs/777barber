@@ -26,7 +26,13 @@ const SERVICOS = {
 const PROFISSIONAIS = ['Mazinho', 'Jefferson']
 const HORARIOS = ['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00']
 const STATUS = ['pendente', 'confirmado', 'cancelado']
-const PRODUTOS = { 'Pomada Matte': 39.9, 'Óleo para barba': 29.9, 'Pó modelador': 34.9 }
+const PRODUTOS = {
+  'Pomada Matte': 39.9,
+  'Gel': 24.9,
+  'Minoxidil': 79.9,
+  'Óleo para barba': 29.9,
+  'Pó modelador': 34.9
+}
 const FUSO = 'America/Sao_Paulo'
 
 // Data/hora de hoje no fuso do Brasil (toISOString usa UTC e "vira o dia" às 21h)
@@ -167,6 +173,11 @@ app.post('/api/usuarios/cadastro', async (req, res) => {
     if (!nome || !email || !senha) return res.status(400).json({ erro: 'Campos obrigatórios faltando.' })
     if (!EMAIL_RE.test(email)) return res.status(400).json({ erro: 'E-mail inválido.' })
     if (senha.length < 6) return res.status(400).json({ erro: 'A senha precisa ter no mínimo 6 caracteres.' })
+    if (nascimento) {
+      const valida = DATA_RE.test(nascimento) && !Number.isNaN(Date.parse(nascimento)) &&
+        nascimento >= '1900-01-01' && nascimento <= hojeBR()
+      if (!valida) return res.status(400).json({ erro: 'Data de nascimento inválida.' })
+    }
 
     const existe = await db.execute({ sql: 'SELECT id FROM usuarios WHERE lower(email) = ?', args: [email] })
     if (existe.rows.length > 0) return res.status(409).json({ erro: 'E-mail já cadastrado.' })

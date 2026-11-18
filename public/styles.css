@@ -1,6 +1,6 @@
 /* =========================================================
    777 Barber - estilos globais
-   Projeto: HTML + CSS + JavaScript | API: Python | DB: MySQL
+   Projeto: HTML + CSS + JavaScript | API: Node.js (Express) | DB: Turso (libSQL)
    ========================================================= */
 
 :root {
@@ -76,7 +76,7 @@ header {
 }
 
 .navbar {
-  min-height: 78px;
+  min-height: 96px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -497,8 +497,6 @@ textarea { min-height: 120px; resize: vertical; }
 
 .bar-list { display: grid; gap: 14px; }
 
-.bar-item { display: grid; gap: 6px; font-size: 0.92rem; }
-
 .bar-track {
   height: 12px;
   border-radius: 999px;
@@ -534,26 +532,38 @@ textarea { min-height: 120px; resize: vertical; }
 .status-muito-alto { color: #e05c5c; }
 
 /* ── Produtos ── */
-.product-card { display: grid; gap: 14px; }
-
-.product-photo {
-  height: 180px;
-  border-radius: 18px;
-  background:
-    linear-gradient(135deg, rgba(214,178,94,0.16), rgba(255,255,255,0.04)),
-    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), transparent 35%);
-  border: 1px solid var(--border);
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   position: relative;
   overflow: hidden;
+  padding: 24px 24px 24px 28px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.product-photo::after {
+/* faixa dourada na lateral */
+.product-card::before {
   content: "";
   position: absolute;
-  inset: 18px;
-  border-radius: 14px;
-  border: 1px dashed rgba(255,255,255,0.20);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--gold), #f2deaa);
 }
+
+.product-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(214, 178, 94, 0.45);
+}
+
+.product-photo { display: none; } /* sem imagens nos produtos */
+.product-card > div { flex: 1; }
+.product-card h3 { margin: 0 0 8px; font-size: 1.15rem; }
+.product-card p { margin: 0; color: var(--muted); line-height: 1.5; }
+.product-card .price { margin-top: 14px; }
+.product-card .btn-add-cart { margin-top: auto; }
 
 .price {
   font-size: 1.35rem;
@@ -794,11 +804,6 @@ footer {
 .selectable.selected strong { color: #f4e1ae; }
 
 /* Slots de horário */
-.slot-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
 
 .selectable-slot {
   cursor: pointer;
@@ -944,9 +949,6 @@ footer {
   display: flex;
   align-items: center;
   gap: 6px;
-}
-.navbar {
-  min-height: 96px;
 }
 
 .brand-logo {
